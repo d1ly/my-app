@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ThemeContext, themes } from "./themeContext";
+import { ThemeContext } from "./themeContext";
 
 
 export function ClickCounter() {

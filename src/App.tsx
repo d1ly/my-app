@@ -1,14 +1,14 @@
 import './App.css';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState} from 'react';
 import { Label, Note } from "./types"; // Import the Label type from the appropriate module
 import { dummyNotesList } from "./constants"; // Import the dummyNotesList from the appropriate module
-import ClickCounter from "./hooksExercise";
+//import ClickCounter from "./hooksExercise";
 import ToggleTheme from './theme';
 import { ThemeContext, themes } from "./themeContext";
 
 
 function App() {
-
+  // functions for creating, updating, deleting notes
   const [notes, setNotes] = useState(dummyNotesList); 
   const initialNote = {
     id: -1,
@@ -17,9 +17,8 @@ function App() {
     label: Label.other,
     favorited: false,
   };
-  const [createNote, setCreateNote] = useState(initialNote);
 
-  // functions for creating, updating, deleting notes
+  const [createNote, setCreateNote] = useState(initialNote);
   const createNoteHandler = (event: React.FormEvent) => {
     event.preventDefault();
     console.log("title: ", createNote.title);
@@ -33,10 +32,12 @@ function App() {
     setNotes(notes.map(note => (note.id  === id ? { ...note, ...updatedNote } : note)));
   };
 
-  const [favoriteTitles, setFavoriteTitles] = useState<string[]>([]); 
-  const [currentTheme, setCurrentTheme] = useState(themes.light);
+  const deleteNoteHandler = (id: number) => {
+    setNotes(notes.filter(note => note.id !== id));
+  };
 
   // function for favorites
+  const [, setFavoriteTitles] = useState<string[]>([]); 
   const toggleFavorite = (id: number) => {
     const updatedNotes = notes.map((note) => {
       if (note.id === id) {
@@ -54,6 +55,7 @@ function App() {
   };
   const favoritedNotes = notes.filter(note => note.favorited);
 
+  const [currentTheme, setCurrentTheme] = useState(themes.light);
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === themes.light ? themes.dark : themes.light);
   };
@@ -107,7 +109,7 @@ function App() {
            <button onClick={() => toggleFavorite(note.id)}>
               {note.favorited ? "❤️" : "♡"}
             </button>
-             <button>x</button>
+             <button onClick={() => deleteNoteHandler(note.id)}>x</button>
            </div>
            <h2 contentEditable onBlur={(event) =>
                 updateNoteHandler(note.id, { title: event.currentTarget.textContent as string})
@@ -131,13 +133,12 @@ function App() {
         <h2>List of favorites</h2>
           <ul>{favoritedNotes.map((note) => (<li key={note.id}>{note.title}</li>))}</ul>
       </div>
-    
 
       <div>
         <ToggleTheme toggleTheme={toggleTheme} />
       </div>
-</div>
-</ThemeContext.Provider>
+  </div>
+  </ThemeContext.Provider>
  );
 }
 

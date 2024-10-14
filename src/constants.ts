@@ -1,4 +1,4 @@
-import { Label, Note } from "./types";
+import { Label } from "./types";
 
 export const dummyNotesList = [
     {

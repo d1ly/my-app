@@ -64,18 +64,6 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
  }
-
- .note-item-dark {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #222222;
-  color: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
- }
  
  .notes-header {
   display: flex;
