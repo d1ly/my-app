@@ -15,6 +15,18 @@
   flex-direction: column;
  }
 
+ .fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+}
+
+.fav-btn.active {
+  color: red; /* Active state for favorited items */
+}
+
 
  /* css from 4.1*/
  body {
@@ -48,6 +60,19 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
+  color: #222222;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+ }
+
+ .note-item-dark {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #222222;
+  color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
  }
