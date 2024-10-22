@@ -31,10 +31,11 @@ describe("Create StickyNote", () => {
    expect(newNoteContent).toBeInTheDocument();
  });
 
- test("creates a new note", () => {
+ test("count all notes", () => {
   render(<StickyNotes />);
   const noteCount = screen.getAllByText(/test note /i);
   // accounting for both title and content containing the text "test note"
+  // there is still 6 sticky notes.
   expect(noteCount.length).toBe(12);
  });
 });
